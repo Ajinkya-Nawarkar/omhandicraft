@@ -6,6 +6,7 @@
     <title>Om Handicraft - Handmade Gift Items</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
         
@@ -60,12 +61,13 @@
     <!-- Header -->
     <header class="relative py-8 bg-white/10 backdrop-blur-sm border-b border-white/20">
         <div class="absolute inset-0 overflow-hidden">
-            <div class="absolute inset-0 bg-gradient-to-r from-emerald-500 via-teal-500 to-blue-600 animate-gradient-x"></div>
-            <div class="absolute inset-0 bg-gradient-to-br from-green-400 via-blue-600 to-cyan-700 animate-gradient-x" style="animation-delay: 1s; animation-duration: 4s;"></div>
-            <div class="absolute inset-0 bg-gradient-to-tl from-teal-500 via-blue-500 to-emerald-600 animate-gradient-x" style="animation-delay: 2s; animation-duration: 6s;"></div>
-            <div class="absolute inset-0 bg-gradient-to-bl from-cyan-400 via-blue-600 to-teal-700 animate-gradient-x" style="animation-delay: 0.5s; animation-duration: 5s;"></div>
+            <div class="absolute inset-0 bg-gradient-to-r from-slate-800 via-blue-900 to-slate-900 animate-gradient-x"></div>
+            <div class="absolute inset-0 bg-gradient-to-br from-blue-800 via-slate-800 to-indigo-900 animate-gradient-x" style="animation-delay: 1s; animation-duration: 4s;"></div>
+            <div class="absolute inset-0 bg-gradient-to-tl from-slate-700 via-blue-800 to-slate-900 animate-gradient-x" style="animation-delay: 2s; animation-duration: 6s;"></div>
+            <div class="absolute inset-0 bg-gradient-to-bl from-blue-900 via-slate-800 to-indigo-800 animate-gradient-x" style="animation-delay: 0.5s; animation-duration: 5s;"></div>
         </div>
-        <div class="relative z-10 text-center">
+        <div id="particles-js" class="absolute inset-0 z-10"></div>
+        <div class="relative z-20 text-center">
             <!-- Peacock Feather Logo -->
             <div class="mb-4">
                 <div class="inline-block text-6xl text-teal-400">
@@ -130,6 +132,109 @@
 
     <script src="script.js"></script>
     <script>
+        // Initialize particles.js
+        particlesJS('particles-js', {
+            "particles": {
+                "number": {
+                    "value": 150,
+                    "density": {
+                        "enable": true,
+                        "value_area": 800
+                    }
+                },
+                "color": {
+                    "value": ["#ffffff", "#f8fafc", "#e2e8f0", "#cbd5e1", "#f59e0b", "#d97706", "#b45309", "#92400e"]
+                },
+                "shape": {
+                    "type": "star",
+                    "stroke": {
+                        "width": 0,
+                        "color": "#000000"
+                    },
+                    "star": {
+                        "nb_sides": 5
+                    }
+                },
+                "opacity": {
+                    "value": 0.8,
+                    "random": true,
+                    "anim": {
+                        "enable": true,
+                        "speed": 1,
+                        "opacity_min": 0.1,
+                        "sync": false
+                    }
+                },
+                "size": {
+                    "value": 2,
+                    "random": false,
+                    "anim": {
+                        "enable": true,
+                        "speed": 1,
+                        "size_min": 1,
+                        "sync": false
+                    }
+                },
+                "line_linked": {
+                    "enable": false
+                },
+                "move": {
+                    "enable": true,
+                    "speed": 1.5,
+                    "direction": "none",
+                    "random": true,
+                    "straight": false,
+                    "out_mode": "out",
+                    "bounce": false,
+                    "attract": {
+                        "enable": false,
+                        "rotateX": 600,
+                        "rotateY": 1200
+                    }
+                }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": {
+                    "onhover": {
+                        "enable": true,
+                        "mode": "bubble"
+                    },
+                    "onclick": {
+                        "enable": true,
+                        "mode": "push"
+                    },
+                    "resize": true
+                },
+                "modes": {
+                    "grab": {
+                        "distance": 400,
+                        "line_linked": {
+                            "opacity": 1
+                        }
+                    },
+                    "bubble": {
+                        "distance": 200,
+                        "size": 8,
+                        "duration": 2,
+                        "opacity": 0.8,
+                        "speed": 3
+                    },
+                    "repulse": {
+                        "distance": 200,
+                        "duration": 0.4
+                    },
+                    "push": {
+                        "particles_nb": 4
+                    },
+                    "remove": {
+                        "particles_nb": 2
+                    }
+                }
+            },
+            "retina_detect": true
+        });
+
         // Load configuration and update the page
         fetch('config.json')
             .then(response => response.json())

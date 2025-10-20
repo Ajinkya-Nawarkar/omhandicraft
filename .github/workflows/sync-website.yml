@@ -11,6 +11,10 @@ on:
 jobs:
   sync-data:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pages: write
+      id-token: write
     
     steps:
     - name: Checkout repository
@@ -47,4 +51,5 @@ jobs:
           git add data/products.json images/
           git commit -m "Daily sync: Update products from Google Sheets [skip ci]"
           git push
+          echo "✅ Changes pushed successfully"
         fi
