@@ -59,26 +59,34 @@
 <body class="min-h-screen bg-gray-50">
     <!-- Header -->
     <header class="relative py-8 bg-white/10 backdrop-blur-sm border-b border-white/20">
-        <div class="absolute inset-0 bg-gradient-to-r from-amber-500/20 to-orange-500/20"></div>
+        <div class="absolute inset-0 overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-r from-emerald-500 via-teal-500 to-blue-600 animate-gradient-x"></div>
+            <div class="absolute inset-0 bg-gradient-to-br from-green-400 via-blue-600 to-cyan-700 animate-gradient-x" style="animation-delay: 1s; animation-duration: 4s;"></div>
+            <div class="absolute inset-0 bg-gradient-to-tl from-teal-500 via-blue-500 to-emerald-600 animate-gradient-x" style="animation-delay: 2s; animation-duration: 6s;"></div>
+            <div class="absolute inset-0 bg-gradient-to-bl from-cyan-400 via-blue-600 to-teal-700 animate-gradient-x" style="animation-delay: 0.5s; animation-duration: 5s;"></div>
+        </div>
         <div class="relative z-10 text-center">
-            <h1 class="inline-block px-8 py-4 bg-gradient-to-r from-amber-400 via-orange-500 to-red-400 text-white text-4xl md:text-5xl font-bold rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-300 transform hover:scale-105 mb-2 animate-gradient-x">
+            <!-- Peacock Feather Logo -->
+            <div class="mb-4">
+                <div class="inline-block text-6xl text-teal-400">
+                    🦚
+                </div>
+            </div>
+            <h1 class="inline-block px-8 py-4 bg-gradient-to-r from-yellow-400 via-orange-500 to-red-600 text-white text-4xl md:text-5xl font-bold rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-300 transform hover:scale-105 mb-2 animate-gradient-x">
                 Om Handicraft
             </h1>
-            <p class="text-2xl text-center text-white/90 font-medium">
+            <p class="text-2xl text-center text-amber-800 font-medium">
                 Handmade Gift Items & Crafts
             </p>
         </div>
     </header>
 
-    <!-- WhatsApp Contact Banner -->
-    <div class="bg-green-500 text-white py-3 px-4 text-center">
-        <div class="flex items-center justify-center space-x-2">
+    <!-- Floating WhatsApp Button -->
+    <div class="fixed top-4 right-4 z-50">
+        <a href="https://wa.me/YOUR_PHONE_NUMBER" id="whatsapp-link" class="bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-110 flex items-center space-x-2 group">
             <i class="fab fa-whatsapp text-2xl"></i>
-            <span class="font-semibold">Contact us on WhatsApp for orders and inquiries</span>
-            <a href="https://wa.me/YOUR_PHONE_NUMBER" class="underline hover:text-green-200 transition-colors" id="whatsapp-link">
-                Click here to chat
-            </a>
-        </div>
+            <span class="hidden group-hover:block font-semibold whitespace-nowrap">Chat with us</span>
+        </a>
     </div>
 
     <!-- Main Content -->
@@ -86,7 +94,7 @@
         <!-- Category Filter -->
         <div class="mb-8">
             <div class="flex flex-wrap gap-2 justify-center">
-                <button class="category-filter px-6 py-3 rounded-full bg-white shadow-md hover:shadow-lg transition-all duration-300 hover-lift active" data-category="all">
+                <button class="category-filter px-6 py-3 rounded-full bg-white shadow-md hover:shadow-lg transition-all duration-300 hover-lift active bg-gradient-to-r from-purple-500 to-pink-500 text-white" data-category="all">
                     All Items
                 </button>
                 <!-- Categories will be dynamically loaded here -->
@@ -114,7 +122,7 @@
 
     <!-- Footer -->
     <footer class="relative mt-16 py-8 bg-white/10 backdrop-blur-sm border-t border-white/20">
-        <div class="absolute inset-0 bg-gradient-to-r from-amber-500/10 to-orange-500/10"></div>
+        <div class="absolute inset-0 bg-gradient-to-r from-purple-500/10 to-pink-500/10"></div>
         <div class="relative z-10 text-center text-gray-600">
             <p>&copy; 2024 Om Handicraft. Handmade with love.</p>
         </div>
@@ -134,7 +142,7 @@
                 const whatsappLink = document.getElementById('whatsapp-link');
                 const phone = config.business.whatsapp_phone.replace(/\D/g, ''); // Remove non-digits
                 whatsappLink.href = `https://wa.me/${phone}?text=${encodeURIComponent(config.business.whatsapp_message)}`;
-                whatsappLink.textContent = "Click here to chat"; // Don't show the phone number
+                // The button text is handled by CSS hover effects
                 
                 // Update theme colors if needed
                 if (config.website.theme.primary_color) {

@@ -92,12 +92,12 @@ class OmHandicraft {
     handleCategoryFilter(button) {
         // Remove active class from all buttons
         document.querySelectorAll('.category-filter').forEach(btn => {
-            btn.classList.remove('active', 'bg-amber-500', 'text-white');
+            btn.classList.remove('active', 'bg-gradient-to-r', 'from-purple-500', 'to-pink-500', 'text-white');
             btn.classList.add('bg-white');
         });
 
         // Add active class to clicked button
-        button.classList.add('active', 'bg-amber-500', 'text-white');
+        button.classList.add('active', 'bg-gradient-to-r', 'from-purple-500', 'to-pink-500', 'text-white');
         button.classList.remove('bg-white');
 
         this.currentCategory = button.dataset.category;
@@ -155,23 +155,23 @@ class OmHandicraft {
                          alt="${product.name}" 
                          class="w-full h-64 object-cover"
                          onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjNmNGY2Ii8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzk5YTNhZiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkltYWdlIG5vdCBmb3VuZDwvdGV4dD48L3N2Zz4='">
-                    <div class="absolute top-4 right-4">
+                    <div class="absolute top-4 right-4 flex flex-col gap-2">
                         <span class="px-3 py-1 rounded-full text-sm font-medium ${availabilityColor} bg-white/90 backdrop-blur-sm">
                             ${product.availability}
                         </span>
+                        <button class="px-3 py-1 bg-gradient-to-r from-yellow-300 to-gray-300 hover:from-yellow-400 hover:to-gray-400 text-gray-800 text-xs font-semibold rounded-full transition-all duration-300 shadow-md hover:shadow-lg flex items-center space-x-1">
+                            <i class="fab fa-whatsapp text-xs"></i>
+                            <span>Order</span>
+                        </button>
                     </div>
                 </div>
                 <div class="p-6">
                     <h3 class="text-xl font-semibold text-gray-800 mb-2">${product.name}</h3>
                     <div class="flex justify-between items-center mb-2">
                         <span class="text-sm text-gray-600">Size: ${product.size}</span>
-                        <span class="text-2xl font-bold text-amber-600">₹${product.price}</span>
+                        <span class="text-2xl font-bold text-yellow-600">₹${product.price}</span>
                     </div>
-                    <p class="text-gray-600 text-sm mb-4">${product.note}</p>
-                    <button class="w-full bg-amber-500 hover:bg-amber-600 text-white font-semibold py-3 px-4 rounded-lg transition-colors duration-300 flex items-center justify-center space-x-2">
-                        <i class="fab fa-whatsapp"></i>
-                        <span>Contact for Order</span>
-                    </button>
+                    <p class="text-gray-600 text-sm">${product.note}</p>
                 </div>
             </div>
         `;
