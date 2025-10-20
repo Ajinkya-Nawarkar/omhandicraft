@@ -77,22 +77,22 @@ class OmHandicraftSync:
             ]
             
             if os.getenv('GITHUB_ACTIONS'):
-                # GitHub Actions - use service account credentials from secrets
+                # GitHub Actions - use service account credentials
                 logger.info("Running in GitHub Actions - using service account credentials")
                 
-                # Get credentials from GitHub Secrets
+                # Get service account credentials from GitHub Secrets
                 credentials_json = os.getenv('GOOGLE_CREDENTIALS')
                 if not credentials_json:
                     raise ValueError("GOOGLE_CREDENTIALS environment variable not set")
                 
-                # Parse the JSON credentials
+                # Parse the service account JSON
                 import json
-                credentials_info = json.loads(credentials_json)
+                service_account_info = json.loads(credentials_json)
                 
-                # Create credentials object
+                # Create service account credentials
                 from google.oauth2 import service_account
                 creds = service_account.Credentials.from_service_account_info(
-                    credentials_info, scopes=SCOPES)
+                    service_account_info, scopes=SCOPES)
                 
             else:
                 # Local development - use OAuth flow
