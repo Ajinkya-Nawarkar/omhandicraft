@@ -181,16 +181,6 @@ class OmHandicraftSync:
                 'note': 'Beautiful handcrafted ceramic bowl perfect for serving'
             },
             {
-                'id': 'textile-001',
-                'name': 'Embroidered Cushion Cover',
-                'category': 'Textiles',
-                'size': 'Standard',
-                'price': 350,
-                'availability': 'In Stock',
-                'image': 'textile-001.jpg',
-                'note': 'Intricately embroidered cushion cover with traditional patterns'
-            },
-            {
                 'id': 'wood-001',
                 'name': 'Carved Wooden Box',
                 'category': 'Woodwork',
