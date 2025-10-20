@@ -74,9 +74,9 @@
     <div class="bg-green-500 text-white py-3 px-4 text-center">
         <div class="flex items-center justify-center space-x-2">
             <i class="fab fa-whatsapp text-2xl"></i>
-            <span class="font-semibold">Contact us on WhatsApp: </span>
+            <span class="font-semibold">Contact us on WhatsApp for orders and inquiries</span>
             <a href="https://wa.me/YOUR_PHONE_NUMBER" class="underline hover:text-green-200 transition-colors" id="whatsapp-link">
-                +91 XXXXX XXXXX
+                Click here to chat
             </a>
         </div>
     </div>
@@ -134,7 +134,7 @@
                 const whatsappLink = document.getElementById('whatsapp-link');
                 const phone = config.business.whatsapp_phone.replace(/\D/g, ''); // Remove non-digits
                 whatsappLink.href = `https://wa.me/${phone}?text=${encodeURIComponent(config.business.whatsapp_message)}`;
-                whatsappLink.textContent = config.business.whatsapp_phone;
+                whatsappLink.textContent = "Click here to chat"; // Don't show the phone number
                 
                 // Update theme colors if needed
                 if (config.website.theme.primary_color) {
