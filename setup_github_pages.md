@@ -66,13 +66,13 @@ Your website will be available at:
 
 1. Go to **Actions** tab in your repository
 2. You should see the "Sync Website Data" workflow
-3. It will run automatically every 6 hours
+3. It will run automatically daily at midnight
 4. You can also trigger it manually
 
 ## 🔄 How It Works
 
 ### Automatic Updates:
-1. **Every 6 hours**: GitHub Actions runs the sync script
+1. **Daily at midnight**: GitHub Actions runs the sync script
 2. **Script reads**: Google Sheets and Google Drive
 3. **Updates**: `data/products.json` and `images/` folder
 4. **Commits**: Changes back to the repository
@@ -117,7 +117,7 @@ omhandicraft/
 1. Open your Google Sheet
 2. Add new product row
 3. Upload image to Google Drive
-4. Wait up to 6 hours (or trigger manually)
+4. Wait until midnight (or trigger manually)
 
 ### To Update Products:
 1. Edit the row in Google Sheet

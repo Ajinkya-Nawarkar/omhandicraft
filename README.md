@@ -78,7 +78,7 @@ python sync_website.py
 ### 5. Deploy the Website
 
 **GitHub Pages (Recommended):**
-- Automatic updates every 6 hours
+- Automatic updates daily at midnight
 - Free hosting
 - Custom domain support
 - No server management needed
