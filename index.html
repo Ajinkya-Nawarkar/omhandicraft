@@ -257,7 +257,14 @@
         });
 
         // Load configuration and update the page
-        fetch('config.json')
+        // Try private config first, fallback to public config
+        fetch('config.private.json')
+            .then(response => {
+                if (!response.ok) {
+                    return fetch('config.json');
+                }
+                return response;
+            })
             .then(response => response.json())
             .then(config => {
                 // Update business name and tagline

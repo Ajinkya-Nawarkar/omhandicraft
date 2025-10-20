@@ -39,6 +39,10 @@ venv.bak/
 credentials.json
 token.json
 
+# Private configuration files
+config.private.json
+*.private.json
+
 # IDE
 .vscode/
 .idea/

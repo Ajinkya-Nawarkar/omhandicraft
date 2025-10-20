@@ -180,15 +180,21 @@ class OmHandicraft {
 
 // Global function for order button clicks
 function orderProduct(productName, price) {
-    // Get the phone number and message from config
-    const phone = '+919881477561'; // Default phone number
-    const message = `Hi! I'm interested in ordering: ${productName} (Price: ₹${price}). Can you tell me more about availability and pricing?`;
-    
-    // Create WhatsApp URL
-    const whatsappUrl = `https://wa.me/${phone.replace(/\D/g, '')}?text=${encodeURIComponent(message)}`;
-    
-    // Open WhatsApp
-    window.open(whatsappUrl, '_blank');
+    // Get phone number from config (loaded dynamically)
+    const phoneElement = document.getElementById('whatsapp-link');
+    if (phoneElement && phoneElement.href) {
+        // Extract phone number from the WhatsApp link
+        const phoneMatch = phoneElement.href.match(/wa\.me\/(\d+)/);
+        if (phoneMatch) {
+            const phone = phoneMatch[1];
+            const message = `Hi! I'm interested in ordering: ${productName} (Price: ₹${price}). Can you tell me more about availability and pricing?`;
+            const whatsappUrl = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+        } else {
+            // Fallback to main WhatsApp button
+            phoneElement.click();
+        }
+    }
 }
 
 // Initialize the application when DOM is loaded
