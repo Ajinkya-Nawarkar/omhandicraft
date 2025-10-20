@@ -80,19 +80,32 @@ class OmHandicraftSync:
             creds = None
             token_file = 'token.json'
             
-            if os.path.exists(token_file):
-                creds = Credentials.from_authorized_user_file(token_file, SCOPES)
-            
-            if not creds or not creds.valid:
-                if creds and creds.expired and creds.refresh_token:
-                    creds.refresh(Request())
+            # Check if we're in GitHub Actions environment
+            if os.getenv('GITHUB_ACTIONS'):
+                # In GitHub Actions, use service account credentials from secrets
+                credentials_json = os.getenv('GOOGLE_CREDENTIALS')
+                if credentials_json:
+                    import json
+                    credentials_data = json.loads(credentials_json)
+                    creds = Credentials.from_authorized_user_info(credentials_data, SCOPES)
                 else:
-                    flow = InstalledAppFlow.from_client_secrets_file(
-                        'credentials.json', SCOPES)
-                    creds = flow.run_local_server(port=0)
+                    logger.error("GOOGLE_CREDENTIALS environment variable not found")
+                    return False
+            else:
+                # Local development - use OAuth flow
+                if os.path.exists(token_file):
+                    creds = Credentials.from_authorized_user_file(token_file, SCOPES)
                 
-                with open(token_file, 'w') as token:
-                    token.write(creds.to_json())
+                if not creds or not creds.valid:
+                    if creds and creds.expired and creds.refresh_token:
+                        creds.refresh(Request())
+                    else:
+                        flow = InstalledAppFlow.from_client_secrets_file(
+                            'credentials.json', SCOPES)
+                        creds = flow.run_local_server(port=0)
+                    
+                    with open(token_file, 'w') as token:
+                        token.write(creds.to_json())
             
             # Build services
             self.sheets_service = build('sheets', 'v4', credentials=creds)

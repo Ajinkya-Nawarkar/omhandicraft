@@ -30,11 +30,9 @@ jobs:
         GOOGLE_SHEET_ID: ${{ secrets.GOOGLE_SHEET_ID }}
         GOOGLE_DRIVE_FOLDER_ID: ${{ secrets.GOOGLE_DRIVE_FOLDER_ID }}
         GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
+        GITHUB_ACTIONS: true
       run: |
-        # Create credentials file from secret
-        echo "$GOOGLE_CREDENTIALS" > credentials.json
-        
-        # Run sync script
+        # Run sync script (credentials are passed via environment variables)
         python sync_website.py
         
     - name: Commit and push changes
