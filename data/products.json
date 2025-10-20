@@ -1,0 +1,45 @@
+{
+  "products": [
+    {
+      "id": "pottery-001",
+      "name": "Handmade Ceramic Bowl",
+      "category": "Pottery",
+      "size": "Medium",
+      "price": 450,
+      "availability": "In Stock",
+      "image": "pottery-001.jpg",
+      "note": "Beautiful handcrafted ceramic bowl perfect for serving"
+    },
+    {
+      "id": "pottery-002",
+      "name": "Handmade Ceramic Bowl",
+      "category": "Pottery",
+      "size": "Large",
+      "price": 650,
+      "availability": "In Stock",
+      "image": "pottery-002.jpg",
+      "note": "Beautiful handcrafted ceramic bowl perfect for serving"
+    },
+    {
+      "id": "textile-001",
+      "name": "Embroidered Cushion Cover",
+      "category": "Textiles",
+      "size": "Standard",
+      "price": 350,
+      "availability": "In Stock",
+      "image": "textile-001.jpg",
+      "note": "Intricately embroidered cushion cover"
+    },
+    {
+      "id": "wood-001",
+      "name": "Carved Wooden Box",
+      "category": "Woodwork",
+      "size": "Small",
+      "price": 800,
+      "availability": "Limited Stock",
+      "image": "wood-001.jpg",
+      "note": "Hand-carved wooden jewelry box"
+    }
+  ],
+  "categories": ["Pottery", "Textiles", "Woodwork"]
+}

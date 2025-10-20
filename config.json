@@ -1,0 +1,25 @@
+{
+  "business": {
+    "name": "Om Handicraft",
+    "tagline": "Handmade Gift Items & Crafts",
+    "whatsapp_phone": "+91XXXXXXXXXX",
+    "whatsapp_message": "Hi! I'm interested in your handicraft products. Can you tell me more about availability and pricing?"
+  },
+  "website": {
+    "theme": {
+      "primary_color": "#f59e0b",
+      "secondary_color": "#ea580c",
+      "accent_color": "#dc2626"
+    },
+    "features": {
+      "show_availability": true,
+      "show_sizes": true,
+      "show_notes": true,
+      "enable_category_filter": true
+    }
+  },
+  "google": {
+    "sheet_id": "your_google_sheet_id_here",
+    "drive_folder_id": "your_google_drive_folder_id_here"
+  }
+}
