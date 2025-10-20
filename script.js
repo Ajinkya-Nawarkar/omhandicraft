@@ -159,7 +159,7 @@ class OmHandicraft {
                         <span class="px-3 py-1 rounded-full text-sm font-medium ${availabilityColor} bg-white/90 backdrop-blur-sm">
                             ${product.availability}
                         </span>
-                        <button class="px-3 py-1 bg-gradient-to-r from-yellow-300 to-gray-300 hover:from-yellow-400 hover:to-gray-400 text-gray-800 text-xs font-semibold rounded-full transition-all duration-300 shadow-md hover:shadow-lg flex items-center space-x-1">
+                        <button onclick="orderProduct('${product.name}', '${product.price}')" class="px-3 py-1 bg-gradient-to-r from-yellow-300 to-gray-300 hover:from-yellow-400 hover:to-gray-400 text-gray-800 text-xs font-semibold rounded-full transition-all duration-300 shadow-md hover:shadow-lg flex items-center space-x-1">
                             <i class="fab fa-whatsapp text-xs"></i>
                             <span>Order</span>
                         </button>
@@ -176,6 +176,19 @@ class OmHandicraft {
             </div>
         `;
     }
+}
+
+// Global function for order button clicks
+function orderProduct(productName, price) {
+    // Get the phone number and message from config
+    const phone = '+919881477561'; // Default phone number
+    const message = `Hi! I'm interested in ordering: ${productName} (Price: ₹${price}). Can you tell me more about availability and pricing?`;
+    
+    // Create WhatsApp URL
+    const whatsappUrl = `https://wa.me/${phone.replace(/\D/g, '')}?text=${encodeURIComponent(message)}`;
+    
+    // Open WhatsApp
+    window.open(whatsappUrl, '_blank');
 }
 
 // Initialize the application when DOM is loaded
