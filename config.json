@@ -2,7 +2,7 @@
   "business": {
     "name": "Om Handicraft",
     "tagline": "Handmade Gift Items & Crafts",
-    "whatsapp_phone": "YOUR_PHONE_NUMBER",
+    "whatsapp_phone": "+919881477561",
     "whatsapp_message": "Hi! I'm interested in your handicraft products. Can you tell me more about availability and pricing?"
   },
   "website": {
@@ -19,7 +19,7 @@
     }
   },
   "google": {
-    "sheet_id": "your_google_sheet_id_here",
-    "drive_folder_id": "your_google_drive_folder_id_here"
+    "sheet_id": "1v4NzgAbAWtuSCylK_UIDFJctO9PcmM1O4ebXSjrkb04",
+    "drive_folder_id": "1A8HkRt6YV7FIQA6dRZ4tHgc0Janp1C-d"
   }
 }
