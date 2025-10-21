@@ -77,11 +77,27 @@ class OmHandicraftSync:
             ]
             
             if os.getenv('GITHUB_ACTIONS'):
-                # GitHub Actions - temporarily use sample data until proper service account setup
-                logger.info("Running in GitHub Actions - using sample data for now")
-                logger.info("To enable real data sync, set up a Google Service Account")
-                # Return True to allow the workflow to continue with sample data
-                return True
+                # GitHub Actions - use OAuth credentials from secrets
+                logger.info("Running in GitHub Actions - using OAuth credentials")
+                
+                # Get credentials from GitHub Secrets
+                credentials_json = os.getenv('GOOGLE_CREDENTIALS')
+                if not credentials_json:
+                    raise ValueError("GOOGLE_CREDENTIALS environment variable not set")
+                
+                # Parse the OAuth credentials JSON
+                import json
+                credentials_info = json.loads(credentials_json)
+                
+                # Create OAuth credentials using the client config
+                from google_auth_oauthlib.flow import Flow
+                flow = Flow.from_client_config(credentials_info, SCOPES)
+                flow.redirect_uri = 'urn:ietf:wg:oauth:2.0:oob'
+                
+                # For GitHub Actions, we need to use a different approach
+                # Since we can't do interactive auth, let's use the client credentials directly
+                from google.oauth2.credentials import Credentials
+                creds = Credentials.from_authorized_user_info(credentials_info, SCOPES)
                 
             else:
                 # Local development - use OAuth flow
@@ -116,11 +132,6 @@ class OmHandicraftSync:
     def get_products_from_sheets(self) -> List[Dict[str, Any]]:
         """Fetch products from Google Sheets"""
         try:
-            # If we're in GitHub Actions, use sample data for now
-            if os.getenv('GITHUB_ACTIONS'):
-                logger.info("Using sample data for GitHub Actions")
-                return self.get_sample_products()
-            
             if not self.sheets_service:
                 raise ValueError("Sheets service not initialized")
             
@@ -206,11 +217,6 @@ class OmHandicraftSync:
     def download_image_from_drive(self, product_id: str) -> bool:
         """Download product image from Google Drive"""
         try:
-            # If we're in GitHub Actions, skip image download for now
-            if os.getenv('GITHUB_ACTIONS'):
-                logger.info(f"Skipping image download for {product_id} in GitHub Actions")
-                return True
-            
             if not self.drive_service:
                 raise ValueError("Drive service not initialized")
             
