@@ -112,6 +112,14 @@
         </a>
     </div>
 
+    <!-- Top Right WhatsApp Button -->
+    <div class="fixed top-4 right-20 z-50">
+        <a href="#" id="whatsapp-top-link" class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 flex items-center space-x-2 text-sm font-medium">
+            <i class="fab fa-whatsapp"></i>
+            <span>WhatsApp</span>
+        </a>
+    </div>
+
     <!-- Main Content -->
     <main class="container mx-auto px-4 py-8">
         <!-- Category Filter -->
@@ -271,11 +279,14 @@
                 document.querySelector('h1').textContent = config.business.name;
                 document.querySelector('p').textContent = config.business.tagline;
                 
-                // Update WhatsApp link
+                // Update WhatsApp links
                 const whatsappLink = document.getElementById('whatsapp-link');
+                const whatsappTopLink = document.getElementById('whatsapp-top-link');
                 const phone = config.business.whatsapp_phone.replace(/\D/g, ''); // Remove non-digits
-                whatsappLink.href = `https://wa.me/${phone}?text=${encodeURIComponent(config.business.whatsapp_message)}`;
-                // The button text is handled by CSS hover effects
+                const whatsappUrl = `https://wa.me/${phone}?text=${encodeURIComponent(config.business.whatsapp_message)}`;
+                
+                whatsappLink.href = whatsappUrl;
+                whatsappTopLink.href = whatsappUrl;
                 
                 // Update theme colors if needed
                 if (config.website.theme.primary_color) {
