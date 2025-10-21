@@ -21,16 +21,6 @@
       "note": "Beautiful handcrafted ceramic bowl perfect for serving"
     },
     {
-      "id": "textile-001",
-      "name": "Embroidered Cushion Cover",
-      "category": "Textiles",
-      "size": "Standard",
-      "price": 350,
-      "availability": "In Stock",
-      "image": "textile-001.jpg",
-      "note": "Intricately embroidered cushion cover"
-    },
-    {
       "id": "wood-001",
       "name": "Carved Wooden Box",
       "category": "Woodwork",
@@ -38,8 +28,12 @@
       "price": 800,
       "availability": "Limited Stock",
       "image": "wood-001.jpg",
-      "note": "Hand-carved wooden jewelry box"
+      "note": "Hand-carved wooden jewelry box with intricate details"
     }
   ],
-  "categories": ["Pottery", "Textiles", "Woodwork"]
+  "categories": [
+    "Pottery",
+    "Woodwork"
+  ],
+  "last_updated": "/home/runner/work/omhandicraft/omhandicraft"
 }
