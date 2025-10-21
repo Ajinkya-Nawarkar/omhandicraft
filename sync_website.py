@@ -77,27 +77,22 @@ class OmHandicraftSync:
             ]
             
             if os.getenv('GITHUB_ACTIONS'):
-                # GitHub Actions - use OAuth credentials from secrets
-                logger.info("Running in GitHub Actions - using OAuth credentials")
+                # GitHub Actions - use Service Account credentials from secrets
+                logger.info("Running in GitHub Actions - using service account credentials")
                 
                 # Get credentials from GitHub Secrets
                 credentials_json = os.getenv('GOOGLE_CREDENTIALS')
                 if not credentials_json:
                     raise ValueError("GOOGLE_CREDENTIALS environment variable not set")
                 
-                # Parse the OAuth credentials JSON
+                # Parse the service account credentials JSON
                 import json
                 credentials_info = json.loads(credentials_json)
                 
-                # Create OAuth credentials using the client config
-                from google_auth_oauthlib.flow import Flow
-                flow = Flow.from_client_config(credentials_info, SCOPES)
-                flow.redirect_uri = 'urn:ietf:wg:oauth:2.0:oob'
-                
-                # For GitHub Actions, we need to use a different approach
-                # Since we can't do interactive auth, let's use the client credentials directly
-                from google.oauth2.credentials import Credentials
-                creds = Credentials.from_authorized_user_info(credentials_info, SCOPES)
+                # Create service account credentials
+                from google.oauth2 import service_account
+                creds = service_account.Credentials.from_service_account_info(
+                    credentials_info, scopes=SCOPES)
                 
             else:
                 # Local development - use OAuth flow
