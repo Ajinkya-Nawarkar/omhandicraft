@@ -24,16 +24,27 @@
       "id": "wood-001",
       "name": "Carved Wooden Box",
       "category": "Woodwork",
-      "size": "Small",
-      "price": 800,
-      "availability": "Limited Stock",
+      "size": "Medium",
+      "price": 1200,
+      "availability": "In Stock",
       "image": "wood-001.jpg",
       "note": "Hand-carved wooden jewelry box with intricate details"
+    },
+    {
+      "id": "nir-001",
+      "name": "niranjan",
+      "category": "nir",
+      "size": "large",
+      "price": 222,
+      "availability": "in stock",
+      "image": "nir-001.jpg",
+      "note": "ssaass"
     }
   ],
   "categories": [
     "Pottery",
-    "Woodwork"
+    "Woodwork",
+    "nir"
   ],
   "last_updated": "/home/runner/work/omhandicraft/omhandicraft"
 }
